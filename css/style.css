@@ -1,0 +1,47 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  row-gap: 20px;
+}
+
+.main .create-main .update-main {
+  grid-row: 1/2;
+  grid-auto-rows: auto;
+  row-gap: 5px;
+}
+
+.main .create-main .update-main h3 {
+  text-align: center;
+}
+
+.main .create-main tr th {
+  width: 200px;
+}
+
+.main .create-main tr td {
+  text-align: center;
+}
+
+.main .create-main tr td:nth-child(4) {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.form-div {
+  margin: 100px auto 50px;
+  padding: 25px 15px 10px 15px;
+  font-size: 1.1em;
+  border: 1px solid #80ced7;
+  border-radius: 5px;
+}
+form p {
+  font-size: 0.89em;
+}
