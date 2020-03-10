@@ -1,11 +1,8 @@
 <?php
-    if(isset($_GET['logout'])) {
+    if(isset($_POST['logout'])) {
+        session_start();
+        unset($_SESSION['username']);
         session_destroy();
-        unset($_SESSION["id"]);
-        unset($_SESSION["username"]);
-        unset($_SESSION["email"]);
-
-        header('location: ./login.php');
-        exit();
+        header("location: ./login.php");
     }
 ?>

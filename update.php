@@ -39,12 +39,22 @@
     <div class="main">
         <form class="update-main" action="./update.php" method="POST">
         <h3>Update Contact</h3>
-            <input type="text" name="updatefirstname" placeholder="First Name" value="<?php echo $editfirstname ?>" required />
-            <input type="text" name="updatemiddleinitial" placeholder="Middle Initial" value="<?php echo $editmiddleinitial ?>" required />
-            <input type="text" name="updatelastname" placeholder="Last Name" value="<?php echo $editlastname ?>" required />
-            <input type="text" name="updateaddress" placeholder="Address" value="<?php echo $editaddress ?>" required />
-            <input type="number" name="updatecontactnumber" placeholder="Contact Number" value="<?php echo $editcontactnumber ?>" required />
-            <input type="submit" name="update" value="Update" />
+            <div class="form-group">
+                <input autofocus required class="form-control form-control-lg" placeholder="First Name" name="updatefirstname" value="<?php echo $editfirstname ?>" type="text">  
+            </div>
+            <div class="form-group">                               
+                <input required class="form-control form-control-lg" placeholder="Middle Initial" name="updatemiddleinitial" value="<?php echo $editmiddleinitial ?>" type="text">  
+            </div>
+            <div class="form-group">                                    
+                <input required class="form-control form-control-lg" placeholder="Last Name" name="updatelastname" value="<?php echo $editlastname ?>" type="text">  
+            </div>
+            <div class="form-group">                                   
+                <input required class="form-control form-control-lg" placeholder="Address" name="updateaddress" value="<?php echo $editaddress ?>" type="text">  
+            </div>
+            <div class="form-group">                                     
+                <input required class="form-control form-control-lg" placeholder="Contact Number" name="updatecontactnumber" value="<?php echo $editcontactnumber ?>" type="number">  
+            </div>
+            <button type="submit" name="update" class="btn btn-default">Update</button>
             <input type="hidden" name="updateId" value="<?php echo $editId?>" />
         </form>
     </div>  

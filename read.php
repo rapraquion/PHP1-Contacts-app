@@ -1,8 +1,8 @@
 <?php
     require('./db.php');
 
-    $sort="";
-    $column="id";
+    $sort="DESC";
+    $column="firstname";
 
     if(isset($_GET['column']) && isset($_GET['sort'])){
          $sort = $_GET['sort'];
@@ -13,6 +13,3 @@
 
     $queryContacts = "SELECT * FROM contacts ORDER BY $column $sort";
     $sqlContacts = mysqli_query($conn, $queryContacts);
-
-
-?>

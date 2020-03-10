@@ -40,6 +40,7 @@ if(isset($_POST["login-btn"])) {
     }
 }
 
+
 // Register handler
 if(isset($_POST['signup-btn'])) {
     $username = $_POST['username'];

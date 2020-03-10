@@ -1,5 +1,9 @@
 <?php
     require('./read.php');
+
+    // if(!isset($_SESSION['username'])) {
+    //     header('location: login.php');
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -12,58 +16,14 @@
     <title>Mini Project - Day 5 - Home</title>
 </head>
 <body>
-    <?php include('./nav.php') ?>
+    <?php include('./includes/nav.php') ?>
     
     <div class="main">
-        <form class="create-main" action="./create.php" method="post">
-        <h3>Create Contact</h3>  
-            <input autofocus type="text" name="firstname" placeholder="First Name" required />
-            <input type="text" name="middleinitial" placeholder="Middle Initial" required />
-            <input type="text" name="lastname" placeholder="Last Name" required />
-            <input type="text" name="address" placeholder="Address" required />
-            <input type="number" name="contactnumber" placeholder="Contact Number" required />
-            <input type="submit" name="newcontact" value="CREATE" />
-        </form>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col"><a href="?column=id&sort=<?php echo $sort?>">No.</a></th>
-                <th scope="col"><a href="?column=firstname&sort=<?php echo $sort?>">First Name</a></th>
-                <th scope="col"><a href="?column=middleinitial&sort=<?php echo $sort?>">Middle Initial</a></th>
-                <th scope="col"><a href="?column=lastname&sort=<?php echo $sort?>">Last Name</a></th>
-                <th scope="col"><a href="?column=address&sort=<?php echo $sort?>">Address</a></th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($results = mysqli_fetch_array($sqlContacts)) { ?>
-                <tr>
-                <th scope="row"><?php echo $results['id'] ?></th>
-                        <td><?php echo $results['firstname'] ?></td>
-                        <td><?php echo $results['middleinitial'] ?></td>
-                        <td><?php echo $results['lastname'] ?></td>
-                        <td><?php echo $results['address'] ?></td>
-                        <td><?php echo $results['contactnumber'] ?></td>
-                        <td>
-                            <form action="./update.php" method="post">
-                                <input type="submit" name="edit" value="Edit" />
-                                <input type="hidden" name="editId" value=<?php echo $results['id'] ?> />
-                                <input type="hidden" name="editfirstname" value=<?php echo $results['firstname'] ?> /> 
-                                <input type="hidden" name="editmiddleinitial" value=<?php echo $results['middleinitial'] ?> /> 
-                                <input type="hidden" name="editlastname" value=<?php echo $results['lastname'] ?> /> 
-                                <input type="hidden" name="editaddress" value=<?php echo $results['address'] ?> />    
-                                <input type="hidden" name="editcontactnumber" value=<?php echo $results['contactnumber'] ?> /> 
-                            </form>
-                            <form action="./delete.php" method="post">
-                                <input type="submit" name="delete" value="Delete" />
-                                <input type="hidden" name="deleteId" value=<?php echo $results['id'] ?> />
-                            </form>
-                        </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        <button autofocus class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalForm">
+            Add Contact
+        </button>
+        <?php include('./includes/addModal.php') ?>
+        <?php include('./includes/table.php') ?>
     </div>  
 <!-- jQuery, Popper.js, Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
