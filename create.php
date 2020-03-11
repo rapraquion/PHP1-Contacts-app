@@ -11,11 +11,14 @@ if(isset($_POST['newcontact'])) {
 
     $queryCreate = "INSERT INTO contacts VALUES (null, '".$firstname."','".$middleinitial."','".$lastname."','".$address."', $contactnumber )";
     $sqlCreate = mysqli_query($conn, $queryCreate);
-
-    $filename = "contacts.txt";
-    $contacts = "$firstname, \t"."$middleinitial, \t"."$lastname, \t"."$address, \t".$contactnumber."\n";
-    file_put_contents($filename, $contacts, FILE_APPEND);  
-    
-    header("location: index.php");
+    if($sqlCreate){
+        $filename = "contacts.txt";
+        $contacts = "$firstname,"."$middleinitial,"."$lastname,"."$address,".$contactnumber."\n";
+        file_put_contents($filename, $contacts, FILE_APPEND);  
+        
+        header("location: index.php");
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>

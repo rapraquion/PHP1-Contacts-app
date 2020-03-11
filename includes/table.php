@@ -10,43 +10,23 @@
         </tr>
     </thead>
     <tbody>
-        <?php while($results = mysqli_fetch_array($sqlContacts)) { ?>
-            <?php if($results < 0): ?>
-                <tr>
-                    <th scope="row">
-                        <?php echo "#" ?>
-                    </th>
-                    <td colspan="5"><?php echo "No Data Found"; ?></td>
-                </tr>
-                <?php else: ?>
-                    <tr>
-                        <td><?php echo $results['firstname'] ?></td>
-                        <td><?php echo $results['middleinitial'] ?></td>
-                        <td><?php echo $results['lastname'] ?></td>
-                        <td><?php echo $results['address'] ?></td>
-                        <td><?php echo $results['contactnumber'] ?></td>
-                        <td>
-                            <!-- <form action="./update.php" method="post">
-                                <button type="submit" name="edit" class="btn btn-info">Edit</button>
-                                <input type="hidden" name="editId" value=<?php echo $results['id'] ?> />
-                                <input type="hidden" name="editfirstname" value=<?php echo $results['firstname'] ?> /> 
-                                <input type="hidden" name="editmiddleinitial" value=<?php echo $results['middleinitial'] ?> /> 
-                                <input type="hidden" name="editlastname" value=<?php echo $results['lastname'] ?> /> 
-                                <input type="hidden" name="editaddress" value=<?php echo $results['address'] ?> />    
-                                <input type="hidden" name="editcontactnumber" value=<?php echo $results['contactnumber'] ?> /> 
-                            </form> -->
-                            <form action="./delete.php" method="post">
-                                <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                <input type="hidden" name="deleteId" value=<?php echo $results['id'] ?> />
-                                <!-- <input type="hidden" name="deletefirstname" value=<?php echo $results['firstname'] ?> />
-                                <input type="hidden" name="deletemiddleinitial" value=<?php echo $results['middleinitial'] ?> />
-                                <input type="hidden" name="deletelastname" value=<?php echo $results['lastname'] ?> />
-                                <input type="hidden" name="deleteaddress" value=<?php echo $results['address'] ?> />
-                                <input type="hidden" name="deletecontactnumber" value=<?php echo $results['contactnumber'] ?> /> -->
-                            </form>
-                        </td>
-                    </tr>
-            <?php endif ?>
-        <?php } ?>
+    <?php $file = fopen("./contacts.txt","r") or die("Error"); ?>
+            <?php $parts = array(); ?>
+                <?php while (!feof($file) ) { ?>
+                    <?php $line= fgets($file); ?>
+                    <?php $parts = explode(',', $line); ?>
+                        <?php if(isset($parts[1])):  ?>
+                            <tr>
+                                <td><?php echo $parts[0] ?></td>
+                                <td><?php echo $parts[1] ?></td>
+                                <td><?php echo $parts[2] ?></td>
+                                <td><?php echo $parts[3] ?></td>
+                                <td><?php echo $parts[4] ?></td>
+                                <td>
+                                    <?php echo "<a class='btn btn-outline-danger' style='color: #000; text-decoration: none;' href='./index.php?deletes=".$parts[0].",".$parts[1].",".$parts[2].",".$parts[3].",".$parts[4]." '>Delete</a>"; ?>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                <?php } ?>
     </tbody>
 </table>
