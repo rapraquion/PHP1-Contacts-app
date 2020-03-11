@@ -23,7 +23,7 @@
                                 <td><?php echo $parts[3] ?></td>
                                 <td><?php echo $parts[4] ?></td>
                                 <td>
-                                    <?php echo "<a class='btn btn-outline-danger' style='color: #000; text-decoration: none;' href='./index.php?deletes=".$parts[0].",".$parts[1].",".$parts[2].",".$parts[3].",".$parts[4]." '>Delete</a>"; ?>
+                                    <?php echo "<a class='btn btn-outline-danger' style='color: #000; text-decoration: none;' href='./delete.php?deletes=".$parts[0].",".$parts[1].",".$parts[2].",".$parts[3].",".$parts[4]." '>Delete</a>"; ?>
                                 </td>
                             </tr>
                         <?php endif; ?>
